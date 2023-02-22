@@ -1,8 +1,11 @@
+import HomePage from '../../pages/HomePage'
 
-describe("Home Page test", () => {
+describe("HomePage test", () => {
+
+    const homePage = new HomePage()
 
     beforeEach(() => {
-        cy.visit("/")
+        homePage.navigate()
     },)
 
     it('Visit Home', () => {
@@ -10,29 +13,22 @@ describe("Home Page test", () => {
     })
 
     it('Visit About Us Section', () => {
-        cy.scrollTo("bottom")
-        cy.get(".col-lg-12 > .nav > :nth-child(1) > .nav-link").click()
+        homePage.goToAboutUsSection()
         cy.url().should("eq", "https://tutorialspoint.com/about/index.htm")
     })
 
     it('List Inputs', () => {
-        cy.get('input').each((input, i) => {
-            cy.log(`Input type text number:${i = i + 1}: ${input.val()}`)
-        })
+        homePage.printAllElementsInConsole('input')
         cy.get('input').should('be.visible')
     })
 
     it('List all Buttons', () => {
-        cy.get('button').each((input, i) => {
-            cy.log(`Button number: ${i = i + 1}: ${input.val()}`)
-        })
+        homePage.printAllElementsInConsole('button')
         cy.get('button').should('be.visible')
     })
 
-    it('List all URLS', () => {
-        cy.get('a[href]').each((input, i) => {
-            cy.log(`Url #: ${i = i + 1}: ${input.val().toString()}`)
-        })
+    it.only('List all URLS', () => {
+        homePage.printAllElementsInConsole('a[href]')
         cy.get('a[href]').should('be.visible')
     })
 })

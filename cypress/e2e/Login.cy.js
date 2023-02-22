@@ -1,8 +1,13 @@
+import LoginPage from '../../pages/LoginPage'
+import HomePage from '../../pages/HomePage'
 
-describe("Cypress test", function () {
+describe("Login test", function () {
+
+    const loginPage = new LoginPage()
+    const homePage = new HomePage()
 
     beforeEach(() => {
-        cy.visit("/")
+        homePage.navigate()
         cy.fixture('login')
             .then(userData => {
                 this.userData = userData
@@ -10,12 +15,11 @@ describe("Cypress test", function () {
     })
 
     it('Login from standard user', () => {
-        cy.get(".navbar-brand > .light-mode-item").should("be.visible")
-        cy.get(".d-lg-inline-block > .btn > .fal").click()
-        cy.get(".fs-2 > :nth-child(1) > .h-100px").should("be.visible")
-        cy.get("#user_email").type(this.userData.username)
-        cy.get("#user_password").type(this.userData.password)
-        cy.get("#user_login").click()
+        homePage.goToLoginSection()
+        loginPage
+            .typeEmail(this.userData.username)
+            .typePassword(this.userData.password)
+            .submit()
         cy.get('.navbar-brand > .navbar-brand-item').should("be.visible")
         cy.get(".menul-active > .nav-link").should("be.visible")
         cy.get("#profileMenu > #profileImage").should("be.visible")
