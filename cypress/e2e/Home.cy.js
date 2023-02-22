@@ -17,14 +17,14 @@ describe("Home Page test", () => {
 
     it('List Inputs', () => {
         cy.get('input').each((input, i) => {
-            cy.log(`Input type text number:${i = i + 1}: ${input.val()}`)
+            cy.log(`Input type text number:${i = i + 1}: ${input.val().toString()}`)
         })
         cy.get('input').should('be.visible')
     })
 
     it('List all Buttons', () => {
         cy.get('button').each((input, i) => {
-            cy.log(`Button number: ${i = i + 1}: ${input.val()}`)
+            cy.log(`Button number: ${i = i + 1}: ${input.val().toString()}`)
         })
         cy.get('button').should('be.visible')
     })
