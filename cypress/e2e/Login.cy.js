@@ -1,5 +1,5 @@
 
-describe("Cypress test", function () {
+describe("Login test", function () {
 
     beforeEach(() => {
         cy.visit("/")
