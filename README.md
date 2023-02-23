@@ -17,6 +17,6 @@
  - Login for user.
 
 ## This project have two more branch.
- . feature/page_object_model
+ - feature/page_object_model
  - feature/bdd_model
 
