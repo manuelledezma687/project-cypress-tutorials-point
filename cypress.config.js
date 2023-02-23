@@ -5,9 +5,11 @@ module.exports = defineConfig({
     baseUrl: 'https://tutorialspoint.com/html',
     viewportWidth: 1920,
     viewportHeight: 1080,
-    chromeWebSecurity: true,
+    chromeWebSecurity: false,
+    specPattern: "**/*.feature",
+    excludeSpecPattern: "*.js,*.ts",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      return require('./cypress/plugins/index.js')(on, config)
     },
   },
 });

@@ -13,6 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cucumber": "^6.0.7",
     "cypress": "^12.6.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.1"
   }
 }
